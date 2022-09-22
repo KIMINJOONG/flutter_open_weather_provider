@@ -28,9 +28,9 @@ class Weather extends Equatable {
     return Weather(
       description: weather['description'],
       icon: weather['icon'],
-      temp: weather['temp'],
-      tempMin: weather['tempMin'],
-      tempMax: weather['tempMax'],
+      temp: main['temp'],
+      tempMin: main['temp_min'],
+      tempMax: main['temp_max'],
       name: '',
       country: '',
       lastUpdated: DateTime.now(),
