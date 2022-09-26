@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_weather_provider/pages/search_page.dart';
 import 'package:open_weather_provider/providers/weather/weather_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? _city;
+
   @override
   void initState() {
     super.initState();
@@ -27,6 +30,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather'),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              _city = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return SearchPage();
+                }),
+              );
+              print(_city);
+              if (_city != null) {
+                context.read<WeatherProvider>().fetchWeather(_city!);
+              }
+            },
+            icon: Icon(Icons.search),
+          )
+        ],
       ),
       body: Center(
         child: Text('Home'),
