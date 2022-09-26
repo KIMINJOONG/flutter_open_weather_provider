@@ -13,7 +13,7 @@ class _SearchPageState extends State<SearchPage> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   void _submit() {
-    setState({
+    setState(() {
       autovalidateMode = AutovalidateMode.always;
     });
 
